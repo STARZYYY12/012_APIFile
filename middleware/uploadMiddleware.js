@@ -11,3 +11,10 @@ const storage = multer.diskStorage({
     cb(null, uniqueName);
   },
 });
+
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = /jpeg|jpg|png/;
+
+  const extname = allowedTypes.test(
+    path.extname(file.originalname).toLowerCase(),
+  );
